@@ -50,9 +50,9 @@ var isValidBST = function(root) {
     // inorder recursion 2
     var inorder = function(node, arr) {
         if (node) {
-            inorder(node.left);
+            inorder(node.left, arr);
             arr.push(node.val);
-            inorder(node.right);
+            inorder(node.right, arr);
         }
     }
     let arr = [];
@@ -63,6 +63,7 @@ var isValidBST = function(root) {
         }
     }
     return true;
+
     // inorder stack
     let stack = [], curr = root, pre = -Infinity;
     while (stack.length || curr) {
