@@ -31,6 +31,9 @@ var levelOrder = function(root) {
     }
     return ans;
     // use single queue
+    if (!root) {
+        return [];
+    }
     let ans = [];
     let q = [root];
     while (q.length > 0) {
@@ -40,8 +43,12 @@ var levelOrder = function(root) {
             let node = q.shift();
             if (node !== null) {
                 currLevel.push(node.val);
-                q.push(node.left);
-                q.push(node.right);
+                if (node.left) {
+                    q.push(node.left);
+                }
+                if (node.right) {
+                    q.push(node.right);
+                }
             }
         }
         ans.push(currLevel);
