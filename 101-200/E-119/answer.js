@@ -12,4 +12,4 @@ var getRow = function(rowIndex) {
     }
     return ret;
 };
-console.log(getRow(4));
+console.log(getRow(1));
