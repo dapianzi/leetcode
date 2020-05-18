@@ -13,3 +13,5 @@ var maxProfit = function(prices) {
     profit += prices[prices.length-1] - pre;
     return profit;
 };
+
+export default maxProfit;

@@ -5,6 +5,8 @@
  *     this.left = this.right = null;
  * }
  */
+const {TreeNode} = require('../../lib.js/tree');
+
 /**
  * @param {number[]} preorder
  * @param {number[]} inorder
@@ -51,3 +53,5 @@ var buildTree = function(preorder, inorder) {
     }
     return build(0,preorder.length-1,0,inorder.length-1);
 };
+
+module.exports = buildTree;
