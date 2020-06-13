@@ -25,3 +25,7 @@ node_modules
 playground.js
 test/*
 lib.js/*
+
+# compiled obj,exe in windows
+*.obj
+*.exe
