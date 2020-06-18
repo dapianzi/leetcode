@@ -16,17 +16,20 @@ var serialize = function(root) {
     if (!root) {
         return "[]";
     }
-    let q = [root], ans = [];
-    while (q.length) {
-        let node = q.shift();
+    let queue = [root], ans = [], idx = 0, last = 0;
+    while (queue.length) {
+        let node = queue.shift();
         if (node) {
-            q.push(node.left);
-            q.push(node.right);
+            queue.push(node.left);
+            queue.push(node.right);
+            ans.push(node.val);
+            last = idx;
+        } else {
+            ans.push(null);
         }
-        ans.push(node?node.val:null);
+        idx ++;
     }
-    // TODO 
-    return JSON.stringify(ans);
+    return JSON.stringify(ans.slice(0, last+1));
 };
 
 /**
