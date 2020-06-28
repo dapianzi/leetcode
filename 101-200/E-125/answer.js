@@ -30,18 +30,42 @@ var isPalindrome = function(s) {
     // }
     // return true;
 
-    // // 
-    s = s.replace(/[_\W]+/g, '').toUpperCase();
-    let l = 0; r = s.length-1;
-    while (l < r) {
-        if (s[l++] !== s[r--]) {
+    // 
+    // s = s.replace(/\W/g, '').toUpperCase();
+    // let l = 0; r = s.length-1;
+    // while (l < r) {
+    //     if (s[l++] !== s[r--]) {
+    //         return false;
+    //     }
+    // }
+    // return true;
+    
+    let left = 0; right = s.length-1;
+    while (left < right) {
+        if (!isAlpha(s[left])) {
+            left++;
+        } else if (!isAlpha(s[right])) {
+            right--;
+        } else if (s[left++].toUpperCase() !== s[right--].toUpperCase()) {
             return false;
         }
     }
     return true;
 };
 
-console.log(isPalindrome('a,!@#$T%^^&&*())_+,./;<>?a'));
-console.log(isPalindrome('"race a car"'));
-console.log(isPalindrome('".,"'));
-console.log(isPalindrome('"A man, a plan, a canal: Panama"'));
+var isAlpha = function (char) {
+    let code = char.toUpperCase().charCodeAt();
+    return (code > 64 && code < 91) || (code > 47 && code < 58)
+}
+
+for (let s of [
+    'a,!@#$T%^^&&*())+,./;<>?a',
+    "race a car",
+    ".,",
+    "A man, a plan, a canal: Panama",
+    "0P"
+]) {
+    console.log(isPalindrome(s));
+}
+
+module.exports = isPalindrome;
